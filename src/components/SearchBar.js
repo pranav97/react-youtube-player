@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
 class SearchBar extends React.Component {
     state = {search : ""};
 
     changeHandler = (event) => {
         this.setState({search : event.target.value});
-        console.log("state = " + this.state);
+        // console.log("state = " + this.state);
     }
     onFormSubmit = (event) => {
         event.preventDefault();
