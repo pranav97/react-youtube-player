@@ -8,7 +8,7 @@ const VideoDetail = ({video, searchPressed}) => {
         }
     }
     else {
-        return <div>Search for something!!</div>
+        return <div>Search something and hit enter!!</div>
     }
     const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`
     return (
