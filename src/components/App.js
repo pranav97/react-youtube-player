@@ -4,8 +4,10 @@ import youtube from '../apis/youtube'
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
 class App extends React.Component {
-    state = {videos:[], selectedVideo: null}
+    state = {videos:[], selectedVideo: null, searchPressed: false}
     onTermSubmit = async (term) => {
+        // call the render method to the video list 
+        this.state.searchPressed = true;
         const resp = await youtube.get('/search', {
             params: {
                 q: term
@@ -19,11 +21,10 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        this.onTermSubmit('diary of jane');
+        // this.onTermSubmit('diary of jane');
     }
 
     onVideoSelect = (video) => {
-        // console.log('this video was selected', video);
         this.setState({selectedVideo:video});
     }
 
@@ -35,7 +36,9 @@ class App extends React.Component {
                     <div className='ui grid'>
                         <div className='ui row'>
                             <div className='eleven wide column'>
-                                <VideoDetail video={this.state.selectedVideo} />
+                                <VideoDetail 
+                                    video={this.state.selectedVideo}
+                                    searchPressed={this.state.searchPressed} />
                             </div>
                             <div className='five wide column'>
                                 <VideoList

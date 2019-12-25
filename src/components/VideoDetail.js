@@ -1,8 +1,14 @@
 import React from 'react';
 
-const VideoDetail = ({video}) => {
-    if (!video) {
-        return <div>Loading... </div>
+const VideoDetail = ({video, searchPressed}) => {
+
+    if (searchPressed) {
+        if (!video) {
+            return <div>Loading.. </div>
+        }
+    }
+    else {
+        return <div>Search for something!!</div>
     }
     const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`
     return (
